@@ -25,99 +25,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-2 sidebar">
-                <ul class="list-group cat-group">
-                    <li class="list-group-item">Category 1</li>
-                    <li class="list-group-item">Category 2</li>
-                    <li class="list-group-item">Category 3</li>
-                    <li class="list-group-item">Category 4</li>
-                    <li class="list-group-item">Category 5</li>
-                </ul>
-            </div>
+            {% include 'siteviewsidebar.html' %}
             <div class="col-9 main">
-                <h1 class="store-header">Liked Items</h1>
+                <h1 class="store-header">Your Liked Items</h1>
                 <div class="row">
+                    {% for product in liked_products %}
                     <div class="col-4 card-space">
-                        <div class="card" style="width: 16rem;">
-                            <img class="card-img-top imgblock" src="..." alt="Product Pic">
+                        <div class="card prodcard" style="width: 16rem;">
+                            <img class="card-img-top imgblock" src="{{product.pic}}" alt="{{product.name}}">
                             <div class="card-body">
-                                <p class="card-text centerp">Product Title</p>
-                                <a href="#" class="btn btn-dark btn-block">View Product</a>
+                                <p class="card-text centerp">{{product.name}}</p>
+                                <a href="/product/{{product.id}}" class="btn btn-dark btn-block prodbtn">View Product</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-4 card-space">
-                        <div class="card" style="width: 16rem;">
-                            <img class="card-img-top imgblock" src="..." alt="Product Pic">
-                            <div class="card-body">
-                                <p class="card-text centerp">Product Title</p>
-                                <a href="#" class="btn btn-dark btn-block">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4 card-space">
-                        <div class="card" style="width: 16rem;">
-                            <img class="card-img-top imgblock" src="..." alt="Product Pic">
-                            <div class="card-body">
-                                <p class="card-text centerp">Product Title</p>
-                                <a href="#" class="btn btn-dark btn-block">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4 card-space">
-                        <div class="card" style="width: 16rem;">
-                            <img class="card-img-top imgblock" src="..." alt="Product Pic">
-                            <div class="card-body">
-                                <p class="card-text centerp">Product Title</p>
-                                <a href="#" class="btn btn-dark btn-block">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4 card-space">
-                        <div class="card" style="width: 16rem;">
-                            <img class="card-img-top imgblock" src="..." alt="Product Pic">
-                            <div class="card-body">
-                                <p class="card-text centerp">Product Title</p>
-                                <a href="#" class="btn btn-dark btn-block">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4 card-space">
-                        <div class="card" style="width: 16rem;">
-                            <img class="card-img-top imgblock" src="..." alt="Product Pic">
-                            <div class="card-body">
-                                <p class="card-text centerp">Product Title</p>
-                                <a href="#" class="btn btn-dark btn-block">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4 card-space">
-                        <div class="card" style="width: 16rem;">
-                            <img class="card-img-top imgblock" src="..." alt="Product Pic">
-                            <div class="card-body">
-                                <p class="card-text centerp">Product Title</p>
-                                <a href="#" class="btn btn-dark btn-block">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4 card-space">
-                        <div class="card" style="width: 16rem;">
-                            <img class="card-img-top imgblock" src="..." alt="Product Pic">
-                            <div class="card-body">
-                                <p class="card-text centerp">Product Title</p>
-                                <a href="#" class="btn btn-dark btn-block">View Product</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4 card-space">
-                        <div class="card" style="width: 16rem;">
-                            <img class="card-img-top imgblock" src="..." alt="Product Pic">
-                            <div class="card-body">
-                                <p class="card-text centerp">Product Title</p>
-                                <a href="#" class="btn btn-dark btn-block">View Product</a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

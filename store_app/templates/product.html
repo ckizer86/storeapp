@@ -82,26 +82,20 @@
                                 </form>
 
                                 <p>Likes: {{product.likes.count}}</p>
-                                {% if user.userlike.all %}{% for like in user.userlike.all %} {% if like.id == product.id %}
-                                    <form action="/unlikeitem" method="post">
-                                        {% csrf_token %}
-                                        <button class="btn btn-primary" type="submit">UnLike</button>
-                                        <input type="hidden" name="postid" value="{{product.id}}">
-                                    </form>
-                                    {% else %}
-                                    <form action="/likeitem" method="post">
-                                        {% csrf_token %}
-                                        <button class="btn btn-primary" type="submit">Like</button>
-                                        <input type="hidden" name="postid" value="{{product.id}}">
-                                    </form>
-                                    {% endif %}{% endfor %}
-                                    {% else %}
-                                    <form action="/likeitem" method="post">
-                                        {% csrf_token %}
-                                        <button class="btn btn-primary" type="submit">Like</button>
-                                        <input type="hidden" name="postid" value="{{product.id}}">
-                                    </form>
-                                    {% endif %}
+
+                                {% if likes %}
+                                <form action="/unlikeitem" method="post">
+                                    {% csrf_token %}
+                                    <button class="btn btn-primary" type="submit">UnLike</button>
+                                    <input type="hidden" name="postid" value="{{product.id}}">
+                                </form>
+                                {% else %}
+                                <form action="/likeitem" method="post">
+                                    {% csrf_token %}
+                                    <button class="btn btn-primary" type="submit">Like</button>
+                                    <input type="hidden" name="postid" value="{{product.id}}">
+                                </form>
+                                {% endif %}
                             </dd>
                         </dl>
                     </div>

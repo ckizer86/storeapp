@@ -163,7 +163,7 @@ def product(request, id):
     context = {
         "product": productinfo,
         "all_categories": Category.objects.all(),
-        "all_likes": productinfo.likes.all(),
+        "likes": productinfo.likes.filter(id=userid),
         "user": user,
     }
 
@@ -186,8 +186,17 @@ def cart(request):
     return render(request, "cart.html")
 
 def likeditems(request):
+    if "user_id" not in request.session:
+        return redirect ('/login')
+    userid = request.session["user_id"]
+    user = User.objects.get(id=userid)
+    context = {
+        "liked_products": user.userlike.all(),
+        "all_categories": Category.objects.all(),
+    }
 
-    return render(request, "like.html")
+
+    return render(request, "like.html", context)
 
 def likeitem(request):
     if "user_id" not in request.session:
