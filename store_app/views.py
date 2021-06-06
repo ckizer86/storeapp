@@ -178,12 +178,33 @@ def addcat(request):
     return redirect('/admin')
 
 def addcart(request):
+    if "user_id" not in request.session:
+        return redirect ('/login')
+    if request.method == "POST":
+        userid = request.session["user_id"]
+        pid = request.POST['pid']
+        quantity = int(request.POST['quantity'])
+        user = User.objects.get(id=userid)
+        product = Product.objects.get(id=pid)
+
+        for count in range(0, quantity):
+            count += 1
+            Cart.objects.create(user = user, product = product)
 
     return redirect('/cart')
 
 def cart(request):
+    if "user_id" not in request.session:
+        return redirect ('/login')
+    userid = request.session["user_id"]
+    user = User.objects.get(id=userid)
 
-    return render(request, "cart.html")
+    context = {
+        "all_categories": Category.objects.all(),
+        "cart_products": Cart.objects.filter(user=user)
+    }
+
+    return render(request, "cart.html", context)
 
 def likeditems(request):
     if "user_id" not in request.session:

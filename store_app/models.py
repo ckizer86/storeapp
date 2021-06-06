@@ -22,6 +22,7 @@ class User(models.Model):
     #useraddress
     #userorders
     #userlike
+    #usercart
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
@@ -34,6 +35,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     #categories
     #orders
+    #productincart
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -56,5 +58,11 @@ class Store(models.Model):
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255)
     zip = models.IntegerField(max_length=5)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, related_name="usercart", on_delete = models.CASCADE)
+    product = models.ForeignKey(Product, related_name="productincart", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

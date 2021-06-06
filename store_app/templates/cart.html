@@ -27,15 +27,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-2 sidebar">
-                <ul class="list-group cat-group">
-                    <li class="list-group-item">Category 1</li>
-                    <li class="list-group-item">Category 2</li>
-                    <li class="list-group-item">Category 3</li>
-                    <li class="list-group-item">Category 4</li>
-                    <li class="list-group-item">Category 5</li>
-                </ul>
-            </div>
+            {% include 'siteviewsidebar.html' %}
             <div class="col-9 main">
                 <h1 class="store-header">Your Cart</h1>
                 <div class="row">
@@ -44,34 +36,19 @@
                             <tr>
                                 <th scope="col">Picture</th>
                                 <th scope="col">Product Name</th>
-                                <th scope="col">Quantity</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for product in cart_products %}
                             <tr>
-                                <th scope="row">pic</th>
-                                <td>Product Name</td>
-                                <td>1</td>
-                                <td>9.99</td>
+                                <th scope="row"><img src="{{product.product.pic}}" style="width: 100px; height: 100px;"></th>
+                                <td>{{product.product.name}}</td>
+                                <td>{{product.product.amount}}</td>
                                 <td>Action</td>
                             </tr>
-                            <tr>
-                                <th scope="row">pic</th>
-                                <td>Product Name</td>
-                                <td>1</td>
-                                <td>9.99</td>
-                                <td>Action</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">pic</th>
-                                <td>Product Name</td>
-                                <td>1</td>
-                                <td>9.99</td>
-                                <td>Action</td>
-                            </tr>
-
+                            {% endfor %}
                         </tbody>
                     </table>
                     <button class="button is-primary" id="submitBtn">Purchase!</button>
