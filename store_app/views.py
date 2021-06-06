@@ -186,9 +186,12 @@ def addcart(request):
         quantity = int(request.POST['quantity'])
         user = User.objects.get(id=userid)
         product = Product.objects.get(id=pid)
+        product.stock = product.stock - quantity
+        product.save()
 
         for count in range(0, quantity):
             count += 1
+
             Cart.objects.create(user = user, product = product)
 
     return redirect('/cart')

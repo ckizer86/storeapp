@@ -45,7 +45,7 @@
                             <tr>
                                 <th scope="row"><img src="{{product.product.pic}}" style="width: 100px; height: 100px;"></th>
                                 <td>{{product.product.name}}</td>
-                                <td>{{product.product.amount}}</td>
+                                <td>{{product.product.amount|floatformat:2}}</td>
                                 <td>Action</td>
                             </tr>
                             {% endfor %}

@@ -11,6 +11,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cart">Cart</a>
+            </li>
 
         </ul>
         {% if request.session.user_id %}Hello, {{request.session.username}} &nbsp; <a class="btn btn-primary" href="/logout" role="button">Logout</a>{% else %}<a class="btn btn-primary" href="/register" role="button">Register</a>&nbsp;<a class="btn btn-primary"
